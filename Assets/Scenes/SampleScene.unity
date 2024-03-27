@@ -134,7 +134,7 @@ GameObject:
   - component: {fileID: 384477154}
   - component: {fileID: 384477153}
   m_Layer: 5
-  m_Name: SliderBar2
+  m_Name: SliderBarSmooth
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -296,13 +296,13 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 758649415}
-        m_TargetAssemblyTypeName: HealthBar, Assembly-CSharp
+        m_TargetAssemblyTypeName: HealthSystem, Assembly-CSharp
         m_MethodName: Damage
-        m_Mode: 1
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
+          m_IntArgument: 10
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -584,6 +584,9 @@ GameObject:
   - component: {fileID: 758649412}
   - component: {fileID: 758649411}
   - component: {fileID: 758649415}
+  - component: {fileID: 758649416}
+  - component: {fileID: 758649417}
+  - component: {fileID: 758649418}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -687,16 +690,51 @@ MonoBehaviour:
   m_GameObject: {fileID: 758649410}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 14f40821864731c429886b70dec6e3c5, type: 3}
+  m_Script: {fileID: 11500000, guid: 5c5e032d551a9994aa1863399eb291c2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _maxHealth: 100
+  _curentHealth: 50
+--- !u!114 &758649416
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 758649410}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0e8146686853c6d4d9ee3365567223b7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _text: {fileID: 508271300}
-  _slider1: {fileID: 1265540419}
-  _slider2: {fileID: 384477153}
-  _maxHealth: 100
-  _damage: 10
-  _addHealth: 20
-  _maxDelta: 0.1
+--- !u!114 &758649417
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 758649410}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9ab71254fcc6c574bbd458accd114d6e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _slider: {fileID: 1265540419}
+--- !u!114 &758649418
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 758649410}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5960cc71680239241aa3025e63ff77f2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _slider: {fileID: 384477153}
+  maxDelta: 0.2
 --- !u!1 &1093102189
 GameObject:
   m_ObjectHideFlags: 0
@@ -783,7 +821,7 @@ GameObject:
   - component: {fileID: 1265540420}
   - component: {fileID: 1265540419}
   m_Layer: 5
-  m_Name: SliderBar1
+  m_Name: SliderBar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1019,13 +1057,13 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 758649415}
-        m_TargetAssemblyTypeName: HealthBar, Assembly-CSharp
-        m_MethodName: AddHealth
-        m_Mode: 1
+        m_TargetAssemblyTypeName: HealthSystem, Assembly-CSharp
+        m_MethodName: Heal
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
+          m_IntArgument: 10
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
