@@ -5,24 +5,31 @@ public class TextBar : MonoBehaviour
 {
     [SerializeField] private TextMeshProUGUI _text;
 
-    private HealthSystem healthSystem;
+    private Health _health;
 
     private int _curentHealth;
 
-    private void Start()
+    private void OnEnable()
     {
-        healthSystem = GetComponent<HealthSystem>();
+        Health.HealthChanged += DisplayTextBar;
     }
 
-    private void Update()
+    private void OnDisable()
     {
-        _curentHealth = healthSystem.CurentHealth;
+        Health.HealthChanged -= DisplayTextBar;
+    }
+
+    private void Start()
+    {
+        _health = GetComponent<Health>();
 
         DisplayTextBar();
     }
 
     public void DisplayTextBar()
     {
-        _text.text = _curentHealth.ToString() + "/" + healthSystem.MaxHealth.ToString();
+        _curentHealth = _health.CurentHealth;
+
+        _text.text = _curentHealth.ToString() + "/" + _health.MaxHealth.ToString();
     }
 }

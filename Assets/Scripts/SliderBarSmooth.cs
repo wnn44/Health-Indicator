@@ -4,30 +4,39 @@ using UnityEngine.UI;
 public class SliderBarSmooth : MonoBehaviour
 {
     [SerializeField] private Slider _slider;
-    [SerializeField] float maxDelta = 0.1f;
+    [SerializeField] private float _maxDelta = 0.1f;
 
-    private HealthSystem healthSystem;
+    private Health _health;
 
     private int _curentHealth;
 
-    private void Start()
+    private void OnEnable()
     {
-        healthSystem = GetComponent<HealthSystem>();        
-
-        _slider.minValue = 0;
-        _slider.maxValue = healthSystem.MaxHealth;
+        Health.HealthChanged += DisplaySliderBar;
     }
 
-    private void Update()
+    private void OnDisable()
     {
-        _curentHealth = healthSystem.CurentHealth;
+        Health.HealthChanged -= DisplaySliderBar;
+    }
+
+    private void Start()
+    {
+        _health = GetComponent<Health>();
+
+        _slider.minValue = 0;
+        _slider.maxValue = _health.MaxHealth;
 
         DisplaySliderBar();
     }
 
+    private void Update()
+    {
+        _slider.value = Mathf.MoveTowards(_slider.value, _curentHealth, _maxDelta);
+    }
+
     private void DisplaySliderBar()
     {
-        float value = Mathf.MoveTowards(_slider.value, _curentHealth, maxDelta);
-        _slider.value = value;
+        _curentHealth = _health.CurentHealth;
     }
 }
