@@ -11,22 +11,22 @@ public class TextBar : MonoBehaviour
 
     private void OnEnable()
     {
-        Health.HealthChanged += DisplayTextBar;
+        _health.HealthChanged += Display;
     }
 
     private void OnDisable()
     {
-        Health.HealthChanged -= DisplayTextBar;
+        _health.HealthChanged -= Display;
     }
 
-    private void Start()
+    private void Awake()
     {
         _health = GetComponent<Health>();
 
-        DisplayTextBar();
+        Display();
     }
 
-    public void DisplayTextBar()
+    public void Display()
     {
         _curentHealth = _health.CurentHealth;
 

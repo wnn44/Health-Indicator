@@ -6,12 +6,12 @@ public class Health : MonoBehaviour
     [SerializeField] private int _maxHealth;
     [SerializeField] private int _curentHealth;
 
-    public static event Action HealthChanged;
+    public event Action HealthChanged;
 
-    public int MaxHealth { get { return _maxHealth; } }
-    public int CurentHealth { get { return _curentHealth; } }
+    public int MaxHealth => _maxHealth;
+    public int CurentHealth => _curentHealth;
 
-    public void Damage(int damageValue)
+    public void TakeDamage(int damageValue)
     {
         _curentHealth -= damageValue;
 
@@ -20,7 +20,7 @@ public class Health : MonoBehaviour
         HealthChanged?.Invoke();
     }
 
-    public void Heal(int healValue)
+    public void TakeHeal(int healValue)
     {
         _curentHealth += healValue;
 

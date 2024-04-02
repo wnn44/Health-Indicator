@@ -11,25 +11,25 @@ public class SliderBat : MonoBehaviour
 
     private void OnEnable()
     {
-        Health.HealthChanged += DisplaySliderBar;
+        _health.HealthChanged += Display;
     }
 
     private void OnDisable()
     {
-        Health.HealthChanged -= DisplaySliderBar;
+        _health.HealthChanged -= Display;
     }
 
-    private void Start()
+    private void Awake()
     {
         _health = GetComponent<Health>();
 
         _slider.minValue = 0;
         _slider.maxValue = _health.MaxHealth;
 
-        DisplaySliderBar();
+        Display();
     }
 
-    private void DisplaySliderBar()
+    private void Display()
     {
         _curentHealth = _health.CurentHealth;
 
