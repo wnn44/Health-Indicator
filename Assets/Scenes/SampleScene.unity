@@ -296,8 +296,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 758649415}
-        m_TargetAssemblyTypeName: HealthSystem, Assembly-CSharp
-        m_MethodName: Damage
+        m_TargetAssemblyTypeName: Health, Assembly-CSharp
+        m_MethodName: TakeDamage
         m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -734,7 +734,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _slider: {fileID: 384477153}
-  maxDelta: 0.2
+  _maxDelta: 0.1
 --- !u!1 &1093102189
 GameObject:
   m_ObjectHideFlags: 0
@@ -1057,8 +1057,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 758649415}
-        m_TargetAssemblyTypeName: HealthSystem, Assembly-CSharp
-        m_MethodName: Heal
+        m_TargetAssemblyTypeName: Health, Assembly-CSharp
+        m_MethodName: TakeHeal
         m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
