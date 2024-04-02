@@ -1,38 +1,22 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-public class SliderBat : MonoBehaviour
+public class SliderBat : Bar
 {
     [SerializeField] private Slider _slider;
 
-    private Health _health;
-
-    private int _curentHealth;
-
-    private void OnEnable()
+    private void Start()
     {
-        _health.HealthChanged += Display;
-    }
-
-    private void OnDisable()
-    {
-        _health.HealthChanged -= Display;
-    }
-
-    private void Awake()
-    {
-        _health = GetComponent<Health>();
-
         _slider.minValue = 0;
-        _slider.maxValue = _health.MaxHealth;
+        _slider.maxValue = Health.MaxHealth;
 
         Display();
     }
 
-    private void Display()
+    public override void Display()
     {
-        _curentHealth = _health.CurentHealth;
+        CurentHealth = Health.CurentHealth;
 
-        _slider.value = _curentHealth;
+        _slider.value = CurentHealth;
     }
 }

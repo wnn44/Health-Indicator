@@ -1,35 +1,19 @@
 using TMPro;
 using UnityEngine;
 
-public class TextBar : MonoBehaviour
+public class TextBar : Bar
 {
     [SerializeField] private TextMeshProUGUI _text;
 
-    private Health _health;
-
-    private int _curentHealth;
-
-    private void OnEnable()
+    private void Start()
     {
-        _health.HealthChanged += Display;
-    }
-
-    private void OnDisable()
-    {
-        _health.HealthChanged -= Display;
-    }
-
-    private void Awake()
-    {
-        _health = GetComponent<Health>();
-
         Display();
     }
 
-    public void Display()
+    public override void Display()
     {
-        _curentHealth = _health.CurentHealth;
+        CurentHealth = Health.CurentHealth;
 
-        _text.text = _curentHealth.ToString() + "/" + _health.MaxHealth.ToString();
+        _text.text = CurentHealth.ToString() + "/" + Health.MaxHealth.ToString();
     }
 }

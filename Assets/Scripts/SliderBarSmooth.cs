@@ -1,45 +1,29 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-public class SliderBarSmooth : MonoBehaviour
+public class SliderBarSmooth : Bar
 {
     [SerializeField] private Slider _slider;
     [SerializeField] private float _maxDelta = 0.1f;
 
-    private Health _health;
-
-    private int _curentHealth;
-
-    private void OnEnable()
+    private void Start()
     {
-        _health.HealthChanged += Display;
-    }
-
-    private void OnDisable()
-    {
-        _health.HealthChanged -= Display;
-    }
-
-    private void Awake()
-    {
-        _health = GetComponent<Health>();
-
         _slider.minValue = 0;
-        _slider.maxValue = _health.MaxHealth;
+        _slider.maxValue = Health.MaxHealth;
 
         Display();
     }
 
     private void Update()
     {
-        if (_slider.value != _curentHealth)
+        if (_slider.value != CurentHealth)
         {
-            _slider.value = Mathf.MoveTowards(_slider.value, _curentHealth, _maxDelta);
+            _slider.value = Mathf.MoveTowards(_slider.value, CurentHealth, _maxDelta);
         }
     }
 
-    private void Display()
+    public override void Display()
     {
-        _curentHealth = _health.CurentHealth;
+        CurentHealth = Health.CurentHealth;
     }
 }
