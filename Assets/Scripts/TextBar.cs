@@ -5,6 +5,8 @@ public class TextBar : Bar
 {
     [SerializeField] private TextMeshProUGUI _text;
 
+    private int _curentHealth;
+
     private void Start()
     {
         Display();
@@ -12,8 +14,8 @@ public class TextBar : Bar
 
     public override void Display()
     {
-        CurentHealth = Health.CurentHealth;
+        _curentHealth = Health.CurentValue;
 
-        _text.text = CurentHealth.ToString() + "/" + Health.MaxHealth.ToString();
+        _text.text = _curentHealth.ToString() + "/" + Health.MaxValue.ToString();
     }
 }

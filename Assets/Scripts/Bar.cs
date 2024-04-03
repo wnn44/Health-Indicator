@@ -1,23 +1,26 @@
 using UnityEngine;
 
+[RequireComponent(typeof(Health))]
+
 public class Bar : MonoBehaviour
 {
-    protected Health Health;
-    protected int CurentHealth;
+    private Health _health;
+
+    protected Health Health => _health;
 
     private void OnEnable()
     {
-        Health.HealthChanged += Display;
+        _health.Changed += Display;
     }
 
     private void OnDisable()
     {
-        Health.HealthChanged -= Display;
+        _health.Changed -= Display;
     }
 
     private void Awake()
     {
-        Health = GetComponent<Health>();
+        _health = GetComponent<Health>();
     }
 
     public virtual void Display() { }
