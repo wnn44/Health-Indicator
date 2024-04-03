@@ -5,13 +5,10 @@ public class SliderBar : Bar
 {
     [SerializeField] private Slider _slider;
 
-    private int _curentHealth;
+    private float _curentHealth;
 
     private void Start()
     {
-        _slider.minValue = 0;
-        _slider.maxValue = Health.MaxValue;
-
         Display();
     }
 
@@ -19,6 +16,6 @@ public class SliderBar : Bar
     {
         _curentHealth = Health.CurentValue;
 
-        _slider.value = _curentHealth;
+        _slider.value = _curentHealth / Health.MaxValue;
     }
 }

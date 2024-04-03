@@ -5,7 +5,7 @@ public class TextBar : Bar
 {
     [SerializeField] private TextMeshProUGUI _text;
 
-    private int _curentHealth;
+    private float _curentHealth;
 
     private void Start()
     {

@@ -8,24 +8,29 @@ public class Health : MonoBehaviour
 
     public event Action Changed;
 
-    public int MaxValue => _maxValue;
-    public int CurentValue => _curentValue;
+    public float MaxValue => _maxValue;
+    public float CurentValue => _curentValue;
 
-    public void TakeDamage(int damageValue)
+    private void CurrentValueChanged()
     {
-        _curentValue -= damageValue;
-
         _curentValue = Mathf.Clamp(_curentValue, 0, _maxValue);
 
         Changed?.Invoke();
     }
 
+    public void TakeDamage(int damageValue)
+    {
+        if (damageValue > 0)
+            _curentValue -= damageValue;
+
+        CurrentValueChanged();
+    }
+
     public void TakeHeal(int healValue)
     {
-        _curentValue += healValue;
+        if (healValue > 0)
+            _curentValue += healValue;
 
-        _curentValue = Mathf.Clamp(_curentValue, 0, _maxValue);
-
-        Changed?.Invoke();
+        CurrentValueChanged();
     }
 }

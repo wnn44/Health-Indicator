@@ -1,31 +1,33 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class SliderBarSmooth : Bar
 {
     [SerializeField] private Slider _slider;
-    [SerializeField] private float _maxDelta = 0.1f;
+    [SerializeField] private float _maxDelta;
 
-    private int _curentHealth;
+    private float _curentHealth;
 
     private void Start()
     {
-        _slider.minValue = 0;
-        _slider.maxValue = Health.MaxValue;
-
         Display();
-    }
-
-    private void Update()
-    {
-        if (_slider.value != _curentHealth)
-        {
-            _slider.value = Mathf.MoveTowards(_slider.value, _curentHealth, _maxDelta);
-        }
     }
 
     public override void Display()
     {
-        _curentHealth = Health.CurentValue;
+        StartCoroutine(wait());
+    }
+
+    IEnumerator wait()
+    {
+        _curentHealth = Health.CurentValue / Health.MaxValue;
+
+        while (_slider.value != _curentHealth)
+        {
+            yield return new WaitForSeconds(_maxDelta);
+
+            _slider.value = Mathf.MoveTowards(_slider.value, _curentHealth, _maxDelta);
+        }
     }
 }
