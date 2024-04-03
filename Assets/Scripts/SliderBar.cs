@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-public class SliderBat : Bar
+public class SliderBar : Bar
 {
     [SerializeField] private Slider _slider;
 
